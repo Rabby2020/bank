@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+    <div id="transaction-area">
+        <div class="row">
+            <div class="col-md-4 ">
+                <div class="deposit common">
+                    <h5>Deposit</h5>
+                    <h2>$ <span id="deposit_balance">00</span></h2>
+                </div>
+            </div>
+            <div class="col-md-4 ">
+                <div class="withdraw common">
+                    <h5>Withdraw</h5>
+                    <h2>$<span id="withdraw_balance">00</span></h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class=" balance common">
+                    <h5>Balance</h5>
+                    <h2>$ <span id="net_balance">500</span></h2>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="submit-area">
+                <h4>Deposit</h4>
+                <input type="text" id="inp1" class="form-control" placeholder="$ amount you want to deposit"><br>
+                <button id="clk1" class="btn btn-success">Deposit</button>
+            </div>
+        </div>
+        <div class="col-md-6">
+           <div class="submit-area">
+                <h4>Withdraw</h4>
+                <input id="inp2" type="text" class="form-control" placeholder="$ amount you want to withdraw"><br>
+                <button id="clk2" class="btn btn-success">Withdraw</button>
+            </div>
+        </div>
+    </div>
+<script>
+    var deposit=document.getElementById("deposit_balance");
+    var deposit_balance=deposit.innerText;
+    deposit_balance=parseFloat(deposit_balance);
+    var withdraw=document.getElementById("withdraw_balance");
+    var withdraw_balance=withdraw.innerText;
+    withdraw_balance=parseFloat(withdraw_balance);
+    var net=document.getElementById("net_balance");
+    var net_balance=net.innerText;
+    net_balance=parseFloat(net_balance);
+
+
+    var clk1=document.getElementById("clk1");
+    clk1.addEventListener("click",function(){
+        var val=document.getElementById("inp1")
+        var value=val.value;
+        value=parseFloat(value);
+        deposit_balance+=value;
+        net_balance+=value;
+        deposit.innerText=deposit_balance;
+        net.innerText=net_balance;
+        val.value="";
+    })
+
+    var clk2=document.getElementById("clk2");
+    clk2.addEventListener("click",function(){
+        var val=document.getElementById("inp2");
+        var value=val.value;
+        value=parseFloat(value);
+        withdraw_balance+=value;
+        net_balance-=value;
+        withdraw.innerText=withdraw_balance;
+        net.innerText=net_balance;
+        val.value="";
+    })
+    
+    
+</script>
+
+</body>
+</html>
